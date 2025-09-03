@@ -1,0 +1,198 @@
+/*
+  Style sheet for James Reid’s curriculum vitae
+  This file applies a simple visual design inspired by Samsung’s One UI.
+  Key characteristics include:
+  • Clear separation between the viewing area and interaction area【599480136451797†L194-L211】
+  • Generous margins and comfortable spacing for a relaxed feel【599480136451797†L205-L208】
+  • Card‑like surfaces with subtle shadows to elevate information
+  • A fixed bottom navigation bar for quick reachability
+*/
+
+/* Base variables */
+:root {
+  --primary-color: #0078d4; /* a vibrant blue reminiscent of Samsung apps */
+  --secondary-color: #00a0b0; /* teal accent for variety */
+  --background-color: #f3f6f9; /* light, warm background for comfort */
+  --card-bg: #ffffff;
+  --text-color: #2c2c2c;
+  --muted-color: #666666;
+  --border-radius-large: 20px;
+  --border-radius-small: 12px;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Reset some default browser styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header / viewing area */
+/*
+  Header (blue banner)
+  Shrink its width to align with the main content and reduce its height.
+  Apply horizontal margins equal to the body padding so it sits neatly
+  in line with the cards. Keep a subtle rounded corner for visual
+  separation.
+*/
+.app-bar {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  padding: 1.5rem 1.25rem;
+  border-radius: var(--border-radius-large);
+  text-align: center;
+  margin: 1.5rem 1.5rem 2rem; /* align width with main cards */
+}
+
+.app-bar h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contacts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+
+/* Ensure contact links are readable against the blue banner */
+.app-bar .contacts a {
+  color: #ffffff;
+}
+
+.app-bar .contacts a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 0.25rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Main content area */
+main {
+  padding: 2rem 1.5rem 2rem; /* reduced bottom padding since nav is removed */
+}
+
+/* Card container */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+}
+
+/* Experience card inside experience section */
+.experience-card {
+  background: var(--background-color);
+  border-radius: var(--border-radius-small);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.experience-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.experience-card .meta {
+  font-size: 0.85rem;
+  color: var(--muted-color);
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* List styles */
+.dot-list, .dash-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.dot-list li, .dash-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.dot-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+}
+
+.dash-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 0.5rem;
+  height: 0.1rem;
+  background: var(--primary-color);
+}
+
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .app-bar {
+    text-align: left;
+    /* wider margins on large screens to match card width */
+    margin: 3rem 3rem 2.5rem;
+    padding: 2rem 2rem;
+  }
+  .contacts {
+    justify-content: flex-start;
+  }
+  main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .card {
+    padding: 2rem;
+  }
+  .experience-card {
+    padding: 1.25rem 1.5rem;
+  }
+}
